@@ -1,9 +1,9 @@
 ﻿public class Song
 {
-    public string Name { get; set; }
-    public string Artist { get; set; }
+    public required string Name { get; set; }
+    public required string Artist { get; set; }
 
-    public List <string> Tags { get; set; }
+    public required List <string> Tags { get; set; }
 
     public int Year { get; set; }
 }
