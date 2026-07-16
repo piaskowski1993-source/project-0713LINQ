@@ -23,7 +23,7 @@ public class Program
                     {
                         Console.WriteLine($"{i + 1}. { findSongs [i].Name}");
                     }
-            Console.WriteLine("\n ENTER FULL SONG NAME FOR SONG DETAILS \n");
+            Console.WriteLine("\n ENTER SONG'S NUMBER FOR SONG DETAILS \n");
             string? pick = Console.ReadLine();
 
             if(int.TryParse(pick, out int chosen))
@@ -39,12 +39,81 @@ public class Program
                 break;
 
                 case "2":
+                 Console.WriteLine("ENTER AN ARTIST NAME OR A PART OF THE ARTIST'S NAME");
+                var find2 = Console.ReadLine();
+                var findArt = songs.Where(song => song.Artist.ToLower().Contains(find2.ToLower())).ToList();
+               
+                for (int i = 0; i < findArt.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. { findArt [i].Name}");
+                    }
+            Console.WriteLine("\n ENTER SONG'S NUMBER FOR SONG DETAILS \n");
+            string? pick2 = Console.ReadLine();
+
+            if(int.TryParse(pick2, out int chosen2))
+                    {
+                        var song = findArt[chosen2 - 1];
+                        Console.WriteLine($"\n{ song.Name} by {song.Artist}, {string.Join(",", song.Tags)}, {song.Year} \n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("INVALID INPUT, CHOOS A VALID NUMBER FROM THE LIST");
+                    }
                 break;
 
                 case "3":
+                   Console.WriteLine("ENTER AN TAG NAME OR A PART OF THE TAGS'S NAME");
+                var find3 = Console.ReadLine();
+                var findTag = songs.Where(song => song.Tags.Any(tag => tag.ToLower().Contains(find3.ToLower()))).ToList();
+               
+                for (int i = 0; i < findTag.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. { findTag [i].Name}");
+                    }
+            Console.WriteLine("\n ENTER SONG'S NUMBER FOR SONG DETAILS \n");
+            string? pick3 = Console.ReadLine();
+
+            if(int.TryParse(pick3, out int chosen3))
+                    {
+                        var song = findTag[chosen3 - 1];
+                        Console.WriteLine($"\n{ song.Name} by {song.Artist}, {string.Join(",", song.Tags)}, {song.Year} \n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("INVALID INPUT, CHOOS A VALID NUMBER FROM THE LIST");
+                    }
                 break;
 
                 case "4":
+                
+                Console.WriteLine("ENTER A YEAR");
+                var find4 = Console.ReadLine();
+                if(int.TryParse(find4, out int year4))
+                    {
+                    var findYear =songs.Where(song =>song.Year == year4).ToList();
+                
+                    for (int i = 0; i < findYear.Count; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. { findYear [i].Name}");
+                    }
+                    
+            Console.WriteLine("\n ENTER SONG'S NUMBER FOR SONG DETAILS \n");
+            string? pick4 = Console.ReadLine();
+
+            if(int.TryParse(pick4, out int chosen4))
+                    {
+                        var song = findYear[chosen4 - 1];
+                        Console.WriteLine($"\n{ song.Name} by {song.Artist}, {string.Join(",", song.Tags)}, {song.Year} \n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("INVALID INPUT, CHOOS A VALID NUMBER FROM THE LIST");
+                    }
+                    }
+                else
+                    {
+                    Console.WriteLine("INCORECT INPUT TRY AGAIN");
+                    }
                 break;
 
                 default:
